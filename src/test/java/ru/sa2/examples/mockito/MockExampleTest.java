@@ -25,7 +25,7 @@ class MockExampleTest {
         MockExample testMock = mock(MockExample.class);
 
         when(testMock.stringFormat(anyString())).thenReturn("KLLKD:KJS:DJFH:SDJLHF");
-        when(testMock.stringFormat("one")).thenReturn("one-two-джигурда");
+        when(testMock.stringFormat("one")).thenReturn("one-two-РґР¶РёРіСѓСЂРґР°");
 
         return testMock;
     }
