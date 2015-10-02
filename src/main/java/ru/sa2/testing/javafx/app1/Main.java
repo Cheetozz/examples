@@ -1,5 +1,6 @@
 package ru.sa2.testing.javafx.app1;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Alexander Smirnov on 02.10.2015.
@@ -20,36 +22,33 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-//        primaryStage.setWidth(400);
-//        primaryStage.setHeight(300);
-
-
         Pane root = new Pane();
 
-        Rectangle rectangle = new Rectangle();
-        rectangle.setHeight(50);
-        rectangle.setWidth(50);
+//        Rectangle rectangle = new Rectangle();
+//        rectangle.setHeight(50);
+//        rectangle.setWidth(50);
 
-        Button btn = new Button("LOL");
-        btn.setLayoutX(200);
-        btn.setLayoutY(200);
-        btn.setOnAction(event -> {
-            rectangle.setFill(Color.RED);
-            System.out.println("lol");
-        });
-        //TODO сделать поле из квадратов, ,что бы при нажатии на пробел у них рандомно менялся цвет;
+        RectangleMatrix rectangleMatrix = new RectangleMatrix();
 
-        rectangle.setOnMouseClicked(event -> {
-            rectangle.setFill(Color.color(Math.random(), Math.random(), Math.random()));
-        });
+//        root.getChildren().addAll(rectangleMatrix);
 
+        rectangleMatrix.setOnMouseClicked(event -> rectangleMatrix.displayRectangles());
 
-        root.getChildren().addAll(btn, rectangle);
-
-
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(rectangleMatrix, 400, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                rectangleMatrix.displayRectangles();
+//                try {
+//                    TimeUnit.SECONDS.sleep(6);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        };
     }
 
 
