@@ -1,11 +1,16 @@
 package ru.sa2.testing.javafx.app1;
 
+import javafx.animation.Animation;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Alexander Smirnov on 02.10.2015.
@@ -26,22 +31,21 @@ public class RectangleMatrix extends Pane {
     public RectangleMatrix (int height, int width){
         this.rectangleHeight = height;
         this.rectangleWidth = width;
-
-//        displayRectangles();
-
     }
 
     public void displayRectangles(){
 
         rectangles.clear();
+        this.getChildren().clear();
 
-        System.out.println("pressed");
 
         double height = this.getHeight();
         double width = this.getWidth();
         int lines = (int)(height / rectangleHeight);
         int columns = (int)(width / rectangleWidth);
-        int posX = 0, posY = 0;
+        System.out.println("pressed");
+        System.out.println("Lines:\t" + lines);
+        System.out.println("Columns:\t" + columns);
 
         for (int line = 0; line < lines; line++){
 
@@ -49,16 +53,28 @@ public class RectangleMatrix extends Pane {
                 Rectangle rectangle = new Rectangle(rectangleWidth, rectangleHeight);
                 rectangle.setX(column * rectangleWidth);
                 rectangle.setY(line * rectangleHeight);
-//                rectangle.setFill(Color.color(Math.random(), Math.random(), Math.random()));
-                rectangle.setFill(Color.color(0.0, 0.0, Math.random()));
+                rectangle.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+//                rectangle.setFill(Color.color(0.0, 0.0, Math.random()));
+
+                RotateTransition rt = new RotateTransition(Duration.millis(3000), rectangle);
+                rt.setByAngle(360);
+                rt.setCycleCount(Animation.INDEFINITE);
+                rt.setInterpolator(Interpolator.LINEAR);
+                rt.play();
 
                 rectangles.add(rectangle);
+//                System.out.println("Rectangle add");
                 this.getChildren().addAll(rectangle);
-
             }
-//            posY *= line;
         }
+    }
 
+    public void shuffleColor(){
+        if (rectangles.size() == 0) displayRectangles();
+
+        for (Rectangle rectangle : rectangles){
+            rectangle.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+        }
     }
 
 }
