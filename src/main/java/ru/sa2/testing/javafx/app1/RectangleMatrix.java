@@ -10,6 +10,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -56,10 +57,12 @@ public class RectangleMatrix extends Pane {
                 rectangle.setFill(Color.color(Math.random(), Math.random(), Math.random()));
 //                rectangle.setFill(Color.color(0.0, 0.0, Math.random()));
 
-                RotateTransition rt = new RotateTransition(Duration.millis(3000), rectangle);
+//                RotateTransition rt = new RotateTransition(Duration.millis(3000), rectangle);
+                RotateTransition rt = new RotateTransition(Duration.millis(new Random().nextInt(2500) + 500) , rectangle);
                 rt.setByAngle(360);
                 rt.setCycleCount(Animation.INDEFINITE);
                 rt.setInterpolator(Interpolator.LINEAR);
+                rt.setFromAngle(new Random().nextDouble() * 360 );
                 rt.play();
 
                 rectangles.add(rectangle);
