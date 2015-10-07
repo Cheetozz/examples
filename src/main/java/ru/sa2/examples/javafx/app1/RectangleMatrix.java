@@ -1,4 +1,4 @@
-package ru.sa2.testing.javafx.app1;
+package ru.sa2.examples.javafx.app1;
 
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
@@ -11,7 +11,6 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Alexander Smirnov on 02.10.2015.
@@ -62,7 +61,7 @@ public class RectangleMatrix extends Pane {
                 rt.setByAngle(360);
                 rt.setCycleCount(Animation.INDEFINITE);
                 rt.setInterpolator(Interpolator.LINEAR);
-                rt.setFromAngle(new Random().nextDouble() * 360 );
+                rt.setFromAngle(new Random().nextDouble() * 360);
                 rt.play();
 
                 rectangles.add(rectangle);

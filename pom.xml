@@ -10,7 +10,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <mainClass>ru.sa2.testing.javafx.app1.Main</mainClass>
+        <mainClass>ru.sa2.examples.javafx.app1.Main</mainClass>
     </properties>
 
     <dependencies>

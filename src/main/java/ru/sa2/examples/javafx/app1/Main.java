@@ -1,20 +1,12 @@
-package ru.sa2.testing.javafx.app1;
+package ru.sa2.examples.javafx.app1;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.application.Preloader;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.stage.Stage;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Alexander Smirnov on 02.10.2015.
