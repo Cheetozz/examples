@@ -80,4 +80,12 @@ public class RectangleMatrix extends Pane {
         }
     }
 
+    public void changeRectanglesSize(int delta){
+
+        if (rectangleHeight - delta > 0) {
+            rectangleHeight-=delta;
+            rectangleWidth-=delta;
+            displayRectangles();
+        }
+    }
 }

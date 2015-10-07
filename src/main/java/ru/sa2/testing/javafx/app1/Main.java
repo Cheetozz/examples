@@ -2,13 +2,16 @@ package ru.sa2.testing.javafx.app1;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.application.Preloader;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.stage.Stage;
 
 import java.util.concurrent.TimeUnit;
@@ -27,28 +30,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         rectangleMatrix = new RectangleMatrix();
-
-        final Service<String> service = new Service<String>() {
-            @Override
-            protected Task<String> createTask() {
-                return new Task<String>() {
-                    @Override
-                    protected String call() throws Exception {
-
-                        while (true) {
-                            System.out.println("hui");
-                            rectangleMatrix.displayRectangles(); //fixme bad way :)
-//                            displayer.handle(new Event(MouseEvent.MOUSE_CLICKED));
-                            try {
-                                TimeUnit.MILLISECONDS.sleep(300);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                };
-            }
-        };
 
         epileptic = new AnimationTimer() {
             @Override
@@ -72,8 +53,14 @@ public class Main extends Application {
                         epileptic.start();
                     } else if (pressedButton == MouseButton.SECONDARY) {
                         epileptic.stop();
+                        rectangleMatrix.displayRectangles();
                     }
                 });
+
+        rectangleMatrix.setOnScroll(event -> {
+            System.out.println("resize");
+            rectangleMatrix.changeRectanglesSize((int) (event.getDeltaY() / 40));
+        });
 
         Scene scene = new Scene(rectangleMatrix, 400, 300);
 
@@ -85,7 +72,13 @@ public class Main extends Application {
             rectangleMatrix.displayRectangles();
         });
 
+        rectangleMatrix.getScene().addEventHandler(KeyEvent.KEY_RELEASED,
+                event -> {
+                    System.out.println("pressed key"); //todo realize help by F1 key
+                });
+
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Epileptica");
         primaryStage.show();
 
     }
