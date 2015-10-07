@@ -1,4 +1,4 @@
 .idea/*
 target/*
 examples.iml
-/src/main/java/ru/sa2/examples/javafx/app1/Main2.java
+#/src/main/java/ru/sa2/examples/javafx/app1/Main2.java
