@@ -14,7 +14,7 @@
 
     <servlet>
         <servlet-name>websecond</servlet-name>
-        <jsp-file>/WEB-INF/LolJsp.jsp</jsp-file>
+        <jsp-file>/WEB-INF/jsp/LolJsp.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>websecond</servlet-name>
