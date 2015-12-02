@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>webfirst</servlet-name>
+        <servlet-class>ru.sa2.examples.servlets.LolServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>webfirst</servlet-name>
+        <url-pattern>/lolfirst/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>websecond</servlet-name>
+        <jsp-file>/WEB-INF/LolJsp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>websecond</servlet-name>
+        <url-pattern>/lolsecond/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
